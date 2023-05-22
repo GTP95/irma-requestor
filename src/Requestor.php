@@ -48,7 +48,7 @@ class Requestor {
 			if (!isset($disjunction["label"]))
 				throw new Exception("Disjunction has no label");
 			if ((!isset($disjunction["attributes"]) && !is_array($disjunction["attributes"])) || count($disjunction["attributes"]) === 0)
-				throw new Exception("Disjunction has no attributes");
+				throw new Exception("Disjunction has no attributes, got".var_dump($disjunction["attributes"]));
 		}
 
 		$request = [
