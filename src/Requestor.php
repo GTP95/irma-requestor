@@ -47,8 +47,10 @@ class Requestor {
 		foreach ($attributes as $disjunction) {
 			if (!isset($disjunction["label"]))
 				throw new Exception("Disjunction has no label");
-			if ((!isset($disjunction["attributes"]) && !is_array($disjunction["attributes"])) || count($disjunction["attributes"]) === 0)
-				throw new Exception("Disjunction has no attributes, got".var_dump($disjunction["attributes"]));
+			if (!isset($disjunction["attributes"]) && !is_array($disjunction["attributes"]))
+				throw new Exception("Disjunction has wrong type. Expecting set or array, got".gettype($disjunction["attributes"]));
+            if (count($disjunction["attributes"]) === 0)
+                throw  new Exception("Disjunction has no attributes");
 		}
 
 		$request = [
